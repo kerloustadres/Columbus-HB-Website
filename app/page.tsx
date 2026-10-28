@@ -617,7 +617,7 @@ export default function Home() {
                       <span>Full name</span>
                       <input type="text" name="name" autoComplete="name" required />
                     </label>
-                    <p className="ferror" data-error-for="name">Please enter your name.</p>
+                    <p className="ferror" data-error-for="name">Please enter your first and last name.</p>
                     <label className="field field--stacked">
                       <span>Phone</span>
                       <input type="tel" name="phone" autoComplete="tel" placeholder="(614) 555-0123" required />
