@@ -11,6 +11,8 @@ next-env.d.ts
 # Environment variables (see .env.example)
 .env
 .env*.local
+# Production values are public (NEXT_PUBLIC_*), so this one is committed for the deploy
+!.env.production
 
 # OS and editor files
 .DS_Store
