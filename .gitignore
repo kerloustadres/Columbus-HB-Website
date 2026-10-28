@@ -1,6 +1,17 @@
 # Local preview tooling (not part of the website)
 .claude/
 
+# Dependencies and Next.js build output
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Environment variables (see .env.example)
+.env
+.env*.local
+
 # OS and editor files
 .DS_Store
 Thumbs.db
