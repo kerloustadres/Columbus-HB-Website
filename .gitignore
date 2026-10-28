@@ -1,0 +1,14 @@
+# Local preview tooling (not part of the website)
+.claude/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.tmp.mp4
