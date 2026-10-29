@@ -1,41 +1,32 @@
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import SiteBehavior from "@/components/SiteBehavior";
+import IconSprite from "@/components/IconSprite";
+import SiteFooter from "@/components/SiteFooter";
+import { FAQS, faqSchema } from "@/lib/faq";
+import { REVIEWS } from "@/lib/reviews";
+import { TRUSTPILOT_URL, jsonLd } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    url: "/",
+    title: "We Buy Houses in Columbus for Cash | Columbus Home Buyers",
+    description: "A fair cash offer in 24 hours. No repairs, no fees, no commissions. Close in as little as 7 days.",
+  },
+};
 
 export default function Home() {
   return (
     <>
       {/* ============ SVG ICON SPRITE ============ */}
-        <svg width="0" height="0" style={{ "position": "absolute" } as CSSProperties} aria-hidden="true">
-          <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></symbol>
-          <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-          <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-          <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-          <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
-          <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-          <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
-          <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-          <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-          <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
-          <symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
-          <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
-          <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-          <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
-          <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-          <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
-          <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-          <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-          <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-          <symbol id="i-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7.1-.9l.5.3a2 2 0 0 0 1.4.2L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
-          <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
-          <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.8l-12-7.5A1 1 0 0 0 7 4.5z"/></symbol>
-          <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
-        </svg>
+        <IconSprite />
 
         {/* ============ NAV ============ */}
         <header className="nav" id="nav">
           <div className="container nav__inner">
             <a href="#home" className="logo" aria-label="Columbus Home Buyers home">
-              <img className="logo__img" src="/assets/images/logo.webp" alt="" width="240" height="240" />
+              <img className="logo__img" src="/assets/images/logo.webp" alt="Columbus Home Buyers logo" width="240" height="240" fetchPriority="high" />
               <span className="logo__text">Columbus<strong>Home Buyers</strong></span>
             </a>
 
@@ -131,29 +122,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <a href="#stats" className="hero__scroll" aria-label="Scroll down"><span></span></a>
-          </section>
-
-          {/* ============ STATS ============ */}
-          <section className="stats" id="stats" aria-label="Company stats">
-            <div className="container stats__grid">
-              <div className="stat" data-animate>
-                <span className="stat__value"><span data-count="100">0</span>+</span>
-                <span className="stat__label">Homes Purchased</span>
-              </div>
-              <div className="stat" data-animate>
-                <span className="stat__value"><span data-count="10">0</span>+</span>
-                <span className="stat__label">Years in Columbus, OH</span>
-              </div>
-              <div className="stat" data-animate>
-                <span className="stat__value"><span data-count="4.9" data-decimals="1">0</span><svg className="icon icon--fill stat__star"><use href="#i-star"/></svg></span>
-                <span className="stat__label">Google Rating</span>
-              </div>
-              <div className="stat" data-animate>
-                <span className="stat__value"><span data-count="100">0</span>%</span>
-                <span className="stat__label">Locally Owned</span>
-              </div>
-            </div>
+            <a href="#how" className="hero__scroll" aria-label="Scroll down"><span></span></a>
           </section>
 
           {/* ============ HOW IT WORKS ============ */}
@@ -371,51 +340,23 @@ export default function Home() {
                   <p className="eyebrow">Real Sellers. Real Results.</p>
                   <h2 className="section__title">What Columbus homeowners say</h2>
                 </div>
-                <div className="reviews__summary">
-                  <span className="reviews__score">4.9</span>
-                  <div>
-                    <span className="stars" aria-label="5 out of 5 stars">
-                      <svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg>
-                    </span>
-                    <span className="reviews__meta">Google Rating &middot; <a href="https://www.trustpilot.com/review/columbushb.com" target="_blank" rel="noopener">See us on Trustpilot</a></span>
-                  </div>
-                </div>
               </header>
 
               <div className="carousel" data-animate>
                 <div className="carousel__track" id="reviewTrack">
-                  <article className="review">
-                    <span className="review__tag">Closed in 10 days</span>
-                    <span className="stars" aria-label="5 stars"><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg></span>
-                    <blockquote>"I was facing foreclosure and didn't know what to do. They gave me a fair offer in 24 hours and we closed in 10 days. Got $127K cash. Lifesaver!"</blockquote>
-                    <footer className="review__who"><span className="avatar">SM</span><span><strong>Sarah M.</strong>Franklinton, Columbus</span></footer>
-                  </article>
-                  <article className="review">
-                    <span className="review__tag">Sold as-is for $145K</span>
-                    <span className="stars" aria-label="5 stars"><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg></span>
-                    <blockquote>"Inherited my mom's house and it needed a ton of work. They bought it as-is for $145K and made the whole process so simple. Highly recommend."</blockquote>
-                    <footer className="review__who"><span className="avatar">JT</span><span><strong>James T.</strong>Westerville, OH</span></footer>
-                  </article>
-                  <article className="review">
-                    <span className="review__tag">Closed in 9 days</span>
-                    <span className="stars" aria-label="5 stars"><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg></span>
-                    <blockquote>"After my divorce, I needed to sell fast. No realtors, no showings, no stress. Got a cash offer and closed in 9 days on my timeline. Thank you!"</blockquote>
-                    <footer className="review__who"><span className="avatar">ML</span><span><strong>Maria L.</strong>Reynoldsburg, OH</span></footer>
-                  </article>
-                  <article className="review">
-                    <a className="review__tag review__tag--tp" href="https://www.trustpilot.com/review/columbushb.com" target="_blank" rel="noopener">Trustpilot &middot; Jun 2026</a>
-                    <span className="stars" aria-label="5 stars"><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg></span>
-                    <h3 className="review__title">Smooth, straightforward closing</h3>
-                    <blockquote>"They were reasonable and straightforward on the closing and it went smoothly without any issues. Would deal with home buyer Joseph again."</blockquote>
-                    <footer className="review__who"><span className="avatar">G</span><span><strong>Gilliland</strong>Verified review</span></footer>
-                  </article>
-                  <article className="review">
-                    <a className="review__tag review__tag--tp" href="https://www.trustpilot.com/review/columbushb.com" target="_blank" rel="noopener">Trustpilot &middot; Jul 2026</a>
-                    <span className="stars" aria-label="5 stars"><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg><svg className="icon icon--fill"><use href="#i-star"/></svg></span>
-                    <h3 className="review__title">Excellent company</h3>
-                    <blockquote>"Good communication and awesome to work with!"</blockquote>
-                    <footer className="review__who"><span className="avatar">RM</span><span><strong>Ruth McRoy</strong>Verified review</span></footer>
-                  </article>
+                  {REVIEWS.map((r) => (
+                    <article className="review" key={r.name}>
+                      <a className="review__tag review__tag--tp" href={TRUSTPILOT_URL} target="_blank" rel="noopener">Trustpilot &middot; {r.date}</a>
+                      <span className="stars" role="img" aria-label={`${r.stars} out of 5 stars`}>
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <svg key={i} className={i < r.stars ? "icon icon--fill" : "icon icon--fill star--off"} aria-hidden="true"><use href="#i-star"/></svg>
+                        ))}
+                      </span>
+                      <h3 className="review__title">{r.title}</h3>
+                      <blockquote>&ldquo;{r.text}&rdquo;</blockquote>
+                      <footer className="review__who"><span className="avatar" aria-hidden="true">{r.initials}</span><span><strong>{r.name}</strong>Trustpilot review</span></footer>
+                    </article>
+                  ))}
                 </div>
 
                 <div className="carousel__controls">
@@ -437,10 +378,7 @@ export default function Home() {
                     </span>
                     <span className="tp-card__body">
                       <strong>Read our reviews on Trustpilot</strong>
-                      <span className="tp-card__stars" aria-hidden="true">
-                        <i><svg className="icon icon--fill"><use href="#i-star"/></svg></i><i><svg className="icon icon--fill"><use href="#i-star"/></svg></i><i><svg className="icon icon--fill"><use href="#i-star"/></svg></i><i><svg className="icon icon--fill"><use href="#i-star"/></svg></i><i><svg className="icon icon--fill"><use href="#i-star"/></svg></i>
-                      </span>
-                      <small>Verified reviews from real sellers</small>
+                      <small>Unprompted reviews from real sellers</small>
                     </span>
                     <svg className="icon tp-card__arrow"><use href="#i-arrow"/></svg>
                   </a>
@@ -448,7 +386,7 @@ export default function Home() {
 
                 <div className="vids__grid">
                   <figure className="vid" data-animate>
-                    <video preload="none" playsInline poster="/assets/videos/testimonial-1.jpg">
+                    <video preload="none" playsInline poster="/assets/videos/testimonial-1.webp" width="720" height="1280" aria-label="Video testimonial 1 from a Columbus home seller" title="Seller testimonial 1">
                       <source src="/assets/videos/testimonial-1.mp4" type="video/mp4" />
                     </video>
                     <button className="vid__play" aria-label="Play seller testimonial 1">
@@ -457,7 +395,7 @@ export default function Home() {
                     <figcaption className="vid__cap"><strong>Seller Story</strong>Columbus homeowner</figcaption>
                   </figure>
                   <figure className="vid" data-animate style={{ "--delay": "0.12s" } as CSSProperties}>
-                    <video preload="none" playsInline poster="/assets/videos/testimonial-2.jpg">
+                    <video preload="none" playsInline poster="/assets/videos/testimonial-2.webp" width="720" height="1280" aria-label="Video testimonial 2 from a Columbus home seller" title="Seller testimonial 2">
                       <source src="/assets/videos/testimonial-2.mp4" type="video/mp4" />
                     </video>
                     <button className="vid__play" aria-label="Play seller testimonial 2">
@@ -631,6 +569,7 @@ export default function Home() {
                     <button type="submit" className="btn btn--primary btn--block">Get My Cash Offer <svg className="icon"><use href="#i-arrow"/></svg></button>
                     <p className="ferror" id="submitError" role="alert">We couldn't send your info. Please try again, or call us at (614) 490-1163.</p>
                     <p className="fprivacy"><svg className="icon"><use href="#i-lock"/></svg> Your information is private and never sold.</p>
+                    <p className="fconsent">By submitting, you agree we may call, text or email you about your property. Reply STOP to opt out of texts. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions">Terms</a>.</p>
                   </fieldset>
 
                   {/* Success */}
@@ -658,43 +597,14 @@ export default function Home() {
               </header>
 
               <div className="faq" data-animate>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">How do you come up with your cash offer?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>We look at your home's location, condition, recent comparable sales nearby, and what it will cost to repair. Because we do that homework up front, the offer you get is the offer you keep. That's our Price Lock Guarantee.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Are there any fees or commissions?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>None. There are no agent commissions and we pay all normal closing costs. The number on your offer is what you take home.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Do I need to make repairs or clean the house?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>No. We buy houses as-is, in any condition. You don't need to fix, paint, or even clean. Take what you want and leave the rest.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">How fast can you close?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>We can close in as little as 7 days. Most of our closings happen in 7 to 14 days. Need more time to move? You choose the closing date.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Will your offer drop after you see the house?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>No. A lot of buyers start high and chip away after inspection. We don't play that game. Once we give you a number, that's the number at closing.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Am I obligated to accept your offer?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>Not at all. Our offers are 100% free and no-obligation. If it doesn't work for you, no hard feelings.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Can you help if I'm behind on payments or facing foreclosure?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>Yes. We regularly help homeowners facing foreclosure, tax liens, and other financial pressure. Because we pay cash and close quickly, we can often move before deadlines hit. Call us as early as you can.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Do you buy houses that are listed with an agent?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>We typically don't make offers on listed properties. If your listing is ending or you're thinking about pulling it, reach out and we'll talk.</p></div></div>
-                </div>
-                <div className="faq__item">
-                  <button className="faq__q" aria-expanded="false">Can you buy a rental with tenants still living there?<svg className="icon"><use href="#i-plus"/></svg></button>
-                  <div className="faq__a"><div><p>Yes. Whether you're tired of managing or dealing with difficult tenants, we can buy rental properties with tenants in place.</p></div></div>
-                </div>
+                {FAQS.map(({ q, a }) => (
+                  <div className="faq__item" key={q}>
+                    <button className="faq__q" aria-expanded="false">{q}<svg className="icon"><use href="#i-plus"/></svg></button>
+                    <div className="faq__a"><div><p>{a}</p></div></div>
+                  </div>
+                ))}
               </div>
+              <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqSchema)} />
             </div>
           </section>
 
@@ -713,66 +623,7 @@ export default function Home() {
           </section>
         </main>
 
-        {/* ============ FOOTER ============ */}
-        <footer className="footer">
-          <div className="container footer__grid">
-            <div className="footer__brand">
-              <a href="#home" className="logo logo--light">
-                <img className="logo__img" src="/assets/images/logo.webp" alt="" width="240" height="240" />
-                <span className="logo__text">Columbus<strong>Home Buyers</strong></span>
-              </a>
-              <p>Local cash home buyers helping Columbus homeowners sell fast, as-is, with no fees and no commissions.</p>
-            </div>
-
-            <div>
-              <h3>Company</h3>
-              <ul>
-                <li><a href="#how">How It Works</a></li>
-                <li><a href="#why">Why Sell To Us</a></li>
-                <li><a href="#compare">Compare Options</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#video-reviews">Video Testimonials</a></li>
-                <li><a href="https://www.trustpilot.com/review/columbushb.com" target="_blank" rel="noopener">Trustpilot Reviews</a></li>
-                <li><a href="#faq">FAQ</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3>We Buy In</h3>
-              <ul>
-                <li>Columbus</li>
-                <li>Westerville</li>
-                <li>Dublin</li>
-                <li>Reynoldsburg</li>
-                <li><a href="#areas">All service areas</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3>Contact</h3>
-              <ul className="footer__contact">
-                <li><svg className="icon"><use href="#i-phone"/></svg><a href="tel:+16144901163">(614) 490-1163</a></li>
-                <li><svg className="icon"><use href="#i-phone"/></svg><a href="tel:+17402725378">(740) 272-5378</a></li>
-                <li><svg className="icon"><use href="#i-mail"/></svg><a href="mailto:info@columbushb.com">info@columbushb.com</a></li>
-                <li><svg className="icon"><use href="#i-clock"/></svg>Open 7 days, 8am to 8pm</li>
-                <li><svg className="icon"><use href="#i-pin"/></svg>Columbus, OH &amp; surrounding areas</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer__bottom">
-            <div className="container footer__bottom-inner">
-              <div className="footer__copy">
-                <p className="footer__copyright">&copy; <span id="year">2026</span> Columbus Home Buyers. All rights reserved.</p>
-                <p className="footer__legal">Columbus Home Buyers buys properties directly from homeowners. Requesting an offer does not obligate you to sell.</p>
-              </div>
-              <a href="#home" className="footer__top" aria-label="Back to top">
-                Back to top
-                <span><svg className="icon"><use href="#i-arrow"/></svg></span>
-              </a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter topHref="#home" />
 
         {/* Mobile sticky action bar */}
         <div className="mobile-bar" id="mobileBar">

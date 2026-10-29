@@ -40,7 +40,7 @@
   --trustpilot: #00b67a;
 
   /* Type */
-  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --fs-xs: 0.78rem;
   --fs-sm: 0.9rem;
   --fs-base: 1rem;
@@ -1320,4 +1320,67 @@ a.review__tag:hover { background: rgba(26, 80, 145, 0.16); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-animate] { transform: none; }
+}
+
+/* ==========================================================
+   16. Inner pages (privacy, terms, 404), breadcrumbs, consent
+   ========================================================== */
+.star--off { color: var(--line-strong); }
+
+.fconsent { margin-top: 0.6rem; font-size: 0.78rem; line-height: 1.5; color: var(--ink-faint); text-align: center; }
+.fconsent a { color: var(--ink-soft); text-underline-offset: 2px; }
+.fconsent a:hover { color: var(--teal-600); }
+
+.footer__policies { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin-top: 0.5rem; font-size: 0.85rem; }
+.footer__policies a { color: rgba(255, 255, 255, 0.78); }
+
+.page-top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: var(--navy-900);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px -14px rgba(0, 0, 0, 0.45);
+}
+.page-top__inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.page-top__actions { display: flex; align-items: center; gap: 1.25rem; }
+
+.page-main { padding-block: clamp(2rem, 5vw, 3.5rem) clamp(4rem, 8vw, 6rem); background: var(--surface); }
+
+.crumbs { margin-bottom: 1.75rem; font-size: var(--fs-sm); }
+.crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; list-style: none; color: var(--ink-faint); }
+.crumbs li { display: inline-flex; align-items: center; gap: 0.35rem; }
+.crumbs li + li::before { content: "/"; color: var(--line-strong); }
+.crumbs a { color: var(--blue-600); font-weight: 600; text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.crumbs [aria-current="page"] { color: var(--ink-soft); font-weight: 600; }
+
+.legal { max-width: 44rem; }
+.legal h1 { font-size: var(--fs-2xl); font-weight: 800; line-height: var(--lh-tight); letter-spacing: -0.03em; }
+.legal__updated { margin-top: 0.6rem; font-size: var(--fs-sm); color: var(--ink-faint); }
+.legal h2 { margin-top: 2.25rem; font-size: 1.25rem; font-weight: 800; line-height: var(--lh-snug); letter-spacing: -0.01em; }
+.legal p, .legal ul { margin-top: 0.85rem; color: var(--ink-soft); }
+.legal > p:first-of-type + p { margin-top: 1.5rem; }
+.legal ul { display: grid; gap: 0.45rem; padding-left: 1.25rem; list-style: disc; }
+.legal li::marker { color: var(--teal-500); }
+.legal strong { color: var(--ink); }
+.legal a { color: var(--blue-600); font-weight: 600; text-underline-offset: 3px; }
+.legal a:hover { color: var(--teal-600); }
+.legal code { font-size: 0.9em; padding: 0.1em 0.35em; border-radius: 6px; background: var(--surface-alt); }
+
+.notfound { max-width: 36rem; padding-block: clamp(1rem, 4vw, 3rem); }
+.notfound h1 { font-size: var(--fs-2xl); font-weight: 800; line-height: var(--lh-tight); letter-spacing: -0.03em; }
+.notfound > p:not(.eyebrow) { margin-top: 1rem; font-size: var(--fs-lg); color: var(--ink-soft); }
+.notfound__links { display: grid; gap: 0.6rem; margin-top: 1.75rem; list-style: none; }
+.notfound__links a {
+  display: flex; align-items: center; min-height: 52px; padding: 0.85rem 1.1rem;
+  font-weight: 700; color: var(--ink); text-decoration: none;
+  background: var(--surface-alt); border: 1.5px solid var(--line); border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, transform 0.25s var(--ease), background-color 0.2s ease;
+}
+.notfound__links a:hover { border-color: var(--teal-400); background: var(--teal-50); transform: translateX(4px); }
+
+@media (max-width: 600px) {
+  .page-top__inner { height: 64px; }
+  .page-top .nav__phone span { display: none; }
+  .page-top .btn--sm { padding-inline: 1rem; }
 }
