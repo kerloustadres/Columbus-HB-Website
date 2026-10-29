@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     "Get a fair cash offer on your Columbus, OH house in 24 hours. No repairs, no fees, no commissions. Sell as-is and close in as little as 7 days.",
   applicationName: SITE_NAME,
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
-  icons: { icon: { url: "/assets/images/logo.webp", type: "image/webp" } },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
