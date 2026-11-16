@@ -122,7 +122,27 @@ export default function Home() {
               </ul>
             </div>
 
-            <a href="#how" className="hero__scroll" aria-label="Scroll down"><span></span></a>
+            <a href="#tv" className="hero__scroll" aria-label="Scroll down"><span></span></a>
+          </section>
+
+          {/* ============ AS SEEN ON TV ============ */}
+          <section className="section section--alt" id="tv">
+            <div className="container">
+              <header className="section__head" data-animate>
+                <p className="eyebrow">As Seen On FOX 28</p>
+                <h2 className="section__title">Meet the team on <span className="hl">Good Day Extra</span></h2>
+                <p className="section__lead">We sat down with FOX 28&rsquo;s Good Day Extra to talk about how we help Columbus homeowners sell, from family estates to rental properties.</p>
+              </header>
+
+              <figure className="vid vid--wide" data-animate>
+                <video preload="none" playsInline poster="/assets/videos/fox28-good-day-extra.webp" width="960" height="540" aria-label="Columbus Home Buyers interview on FOX 28 Good Day Extra" title="Columbus Home Buyers on FOX 28 Good Day Extra">
+                  <source src="/assets/videos/fox28-good-day-extra.mp4" type="video/mp4" />
+                </video>
+                <button className="vid__play" aria-label="Play the FOX 28 Good Day Extra interview">
+                  <span><svg className="icon icon--fill"><use href="#i-play"/></svg></span>
+                </button>
+              </figure>
+            </div>
           </section>
 
           {/* ============ HOW IT WORKS ============ */}
