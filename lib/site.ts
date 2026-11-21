@@ -8,8 +8,8 @@ export const EMAIL = "info@columbushb.com";
 export const TRUSTPILOT_URL = "https://www.trustpilot.com/review/columbushb.com";
 
 /** Date the Privacy Policy and Terms were last changed. Update it whenever either page's text changes. */
-export const LEGAL_UPDATED = "October 30, 2026";
-export const LEGAL_UPDATED_ISO = "2026-10-30";
+export const LEGAL_UPDATED = "November 22, 2026";
+export const LEGAL_UPDATED_ISO = "2026-11-22";
 
 /** Serialize structured data for a <script type="application/ld+json"> tag without letting "<" close it early. */
 export function jsonLd(data: unknown) {

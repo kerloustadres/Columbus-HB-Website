@@ -32,6 +32,11 @@ export default function PrivacyPolicy() {
           <li>Your name, phone number and email address</li>
         </ul>
         <p>We also receive whatever you choose to tell us when you call, text or email us.</p>
+        <p>
+          If you use the chat assistant on our website, we receive the messages you type. When you ask us to follow up, the
+          assistant sends us the name, phone number, property details and any other contact details you shared in the chat.
+          The conversation itself is kept in your browser tab and is cleared when you close it.
+        </p>
 
         <h2>Information collected automatically</h2>
         <p>
@@ -66,6 +71,7 @@ export default function PrivacyPolicy() {
           <li><strong>Supabase</strong>, which stores the offer requests submitted through our form</li>
           <li><strong>Zapier</strong> and <strong>Follow Up Boss</strong>, which deliver your request to our team and keep track of our follow-up</li>
           <li><strong>Hostinger</strong>, which hosts this website</li>
+          <li><strong>Anthropic</strong>, whose Claude AI model powers our website chat assistant and processes the messages you type in it</li>
         </ul>
         <p>
           If you move forward with a sale, we will also share the details needed to close with the title company, closing

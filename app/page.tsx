@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import SiteBehavior from "@/components/SiteBehavior";
 import IconSprite from "@/components/IconSprite";
 import SiteFooter from "@/components/SiteFooter";
+import ChatWidget from "@/components/ChatWidget";
 import { FAQS, faqSchema } from "@/lib/faq";
 import { REVIEWS } from "@/lib/reviews";
 import { TRUSTPILOT_URL, jsonLd } from "@/lib/site";
@@ -648,6 +649,8 @@ export default function Home() {
           <a href="tel:+16144901163" className="btn btn--ghost-dark"><svg className="icon"><use href="#i-phone"/></svg> Call</a>
           <a href="#offer" className="btn btn--primary">Get Cash Offer</a>
         </div>
+
+        <ChatWidget />
 
       <SiteBehavior />
     </>
