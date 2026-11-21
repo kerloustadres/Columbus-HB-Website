@@ -11,6 +11,8 @@ export type Lead = {
   condition: string;
   timeline: string;
   reason: string;
+  /** "chat" leads carry free-text condition/timeline/reason, which go to `notes` instead of the form's fixed-choice columns. */
+  source: "offer_form" | "chat";
   utm?: Partial<Record<"utm_source" | "utm_medium" | "utm_campaign" | "utm_term" | "utm_content", string>>;
 };
 
@@ -65,11 +67,19 @@ async function sendToZapier(lead: Lead) {
 async function saveToSupabase(lead: Lead) {
   const supabase = await createClient();
   // No .select() after insert: public roles can insert leads but not read them back.
+  const fromForm = lead.source === "offer_form";
+  const chatNotes = [
+    lead.reason,
+    lead.timeline && `Timeline: ${lead.timeline}`,
+    lead.condition && `Condition: ${lead.condition}`,
+  ].filter(Boolean).join("\n");
   const { error } = await supabase.from("leads").insert({
-    address: lead.address,
-    condition: orNull(lead.condition),
-    timeline: orNull(lead.timeline),
-    reason: orNull(lead.reason),
+    source: lead.source,
+    address: orNull(lead.address),
+    condition: fromForm ? orNull(lead.condition) : null,
+    timeline: fromForm ? orNull(lead.timeline) : null,
+    reason: fromForm ? orNull(lead.reason) : null,
+    notes: fromForm ? null : chatNotes.slice(0, 2000),
     is_listed: lead.listed ? lead.listed === "Yes" : null,
     asking_price: lead.price ? Number(lead.price) : null,
     full_name: lead.fullName,

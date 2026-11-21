@@ -50,6 +50,7 @@ export async function submitLead(input: LeadInput): Promise<SubmitLeadResult> {
     condition: text(input.condition),
     timeline: text(input.timeline),
     reason: text(input.reason),
+    source: "offer_form",
     utm: {
       utm_source: text(input.utm_source),
       utm_medium: text(input.utm_medium),

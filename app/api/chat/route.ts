@@ -95,6 +95,7 @@ async function runSaveLead(input: unknown): Promise<{ content: string; isError: 
     condition: str(i.condition),
     timeline: str(i.timeline),
     reason: reason.slice(0, 1000),
+    source: "chat",
   });
   return saved
     ? { content: "Saved. The team has the visitor's details.", isError: false, saved: true }
