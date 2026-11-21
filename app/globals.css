@@ -1545,3 +1545,37 @@ a.review__tag:hover { background: rgba(26, 80, 145, 0.16); }
   :root { --glass-fill: linear-gradient(#fff, #fff); --glare: linear-gradient(transparent, transparent); }
   .nav.is-scrolled, .page-top, .nav__links { background: var(--navy-900); }
 }
+
+/* ============ 19. Video reviews section ============ */
+#video-reviews {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(40% 60% at 10% 20%, rgba(79, 199, 168, 0.22), transparent 70%),
+    radial-gradient(45% 65% at 92% 85%, rgba(26, 80, 145, 0.6), transparent 70%),
+    var(--navy-900);
+}
+.section__lead--light { color: var(--text-muted); }
+.vids__grid--3 { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 60rem; margin-inline: auto; }
+.vids__grid--3 .vid { border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: var(--glass-dark-shine), 0 30px 60px -24px rgba(0, 0, 0, 0.6); }
+.tp-card--center { width: fit-content; max-width: 100%; margin: 2.5rem auto 0; }
+
+@media (max-width: 760px) {
+  /* Swipe through the videos instead of stacking three tall players */
+  .vids__grid--3 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: 72%;
+    gap: 0.9rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0.5rem var(--gutter) 1rem;
+    scroll-padding-inline: var(--gutter);
+  }
+  .vids__grid--3::-webkit-scrollbar { display: none; }
+  .vids__grid--3 .vid { scroll-snap-align: start; }
+}

@@ -64,12 +64,12 @@ export default function Home() {
             <div className="container">
               <nav className="subnav__links" id="subnavLinks" aria-label="Jump to section">
                 <a href="#how">How It Works</a>
+                <a href="#video-reviews">Videos</a>
                 <a href="#why">Why Us</a>
                 <a href="#guarantee">Guarantee</a>
                 <a href="#compare">Compare</a>
                 <a href="#situations">Situations</a>
                 <a href="#reviews">Reviews</a>
-                <a href="#video-reviews">Videos</a>
                 <a href="#areas">Areas</a>
                 <a href="#offer">Get Offer</a>
                 <a href="#faq">FAQ</a>
@@ -177,6 +177,31 @@ export default function Home() {
 
               <div className="center" data-animate>
                 <a href="#offer" className="btn btn--dark">Start Step 1 Now <svg className="icon"><use href="#i-arrow"/></svg></a>
+              </div>
+            </div>
+          </section>
+
+          {/* ============ VIDEO REVIEWS ============ */}
+          <section className="section section--dark" id="video-reviews">
+            <div className="container">
+              <header className="section__head" data-animate>
+                <p className="eyebrow eyebrow--light">Video Reviews</p>
+                <h2 className="section__title section__title--light">Hear it straight from our sellers</h2>
+                <p className="section__lead section__lead--light">Real Columbus homeowners sharing what it was like to sell their house to us. No scripts, no actors.</p>
+              </header>
+
+              <div className="vids__grid vids__grid--3">
+                {[1, 2, 3].map((n) => (
+                  <figure className="vid" data-animate style={{ "--delay": `${(n - 1) * 0.12}s` } as CSSProperties} key={n}>
+                    <video preload="none" playsInline poster={`/assets/videos/testimonial-${n}.webp`} width="720" height="1280" aria-label={`Video testimonial ${n} from a Columbus home seller`} title={`Seller testimonial ${n}`}>
+                      <source src={`/assets/videos/testimonial-${n}.mp4`} type="video/mp4" />
+                    </video>
+                    <button className="vid__play" aria-label={`Play seller testimonial ${n}`}>
+                      <span><svg className="icon icon--fill"><use href="#i-play"/></svg></span>
+                    </button>
+                    <figcaption className="vid__cap"><strong>Seller Story</strong>Columbus homeowner</figcaption>
+                  </figure>
+                ))}
               </div>
             </div>
           </section>
@@ -385,46 +410,16 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Video testimonials */}
-              <div className="vids" id="video-reviews">
-                <div className="vids__copy" data-animate>
-                  <p className="eyebrow">Video Testimonials</p>
-                  <h3 className="vids__title">Hear it straight from our sellers</h3>
-                  <p className="section__lead">Real Columbus homeowners sharing what it was like to sell their house to us. No scripts, no actors.</p>
-
-                  <a href="https://www.trustpilot.com/review/columbushb.com" target="_blank" rel="noopener" className="tp-card">
-                    <span className="tp-card__logo" aria-hidden="true">
-                      <svg className="icon icon--fill"><use href="#i-star"/></svg>
-                    </span>
-                    <span className="tp-card__body">
-                      <strong>Read our reviews on Trustpilot</strong>
-                      <small>Unprompted reviews from real sellers</small>
-                    </span>
-                    <svg className="icon tp-card__arrow"><use href="#i-arrow"/></svg>
-                  </a>
-                </div>
-
-                <div className="vids__grid">
-                  <figure className="vid" data-animate>
-                    <video preload="none" playsInline poster="/assets/videos/testimonial-1.webp" width="720" height="1280" aria-label="Video testimonial 1 from a Columbus home seller" title="Seller testimonial 1">
-                      <source src="/assets/videos/testimonial-1.mp4" type="video/mp4" />
-                    </video>
-                    <button className="vid__play" aria-label="Play seller testimonial 1">
-                      <span><svg className="icon icon--fill"><use href="#i-play"/></svg></span>
-                    </button>
-                    <figcaption className="vid__cap"><strong>Seller Story</strong>Columbus homeowner</figcaption>
-                  </figure>
-                  <figure className="vid" data-animate style={{ "--delay": "0.12s" } as CSSProperties}>
-                    <video preload="none" playsInline poster="/assets/videos/testimonial-2.webp" width="720" height="1280" aria-label="Video testimonial 2 from a Columbus home seller" title="Seller testimonial 2">
-                      <source src="/assets/videos/testimonial-2.mp4" type="video/mp4" />
-                    </video>
-                    <button className="vid__play" aria-label="Play seller testimonial 2">
-                      <span><svg className="icon icon--fill"><use href="#i-play"/></svg></span>
-                    </button>
-                    <figcaption className="vid__cap"><strong>Seller Story</strong>Columbus homeowner</figcaption>
-                  </figure>
-                </div>
-              </div>
+              <a href={TRUSTPILOT_URL} target="_blank" rel="noopener" className="tp-card tp-card--center" data-animate>
+                <span className="tp-card__logo" aria-hidden="true">
+                  <svg className="icon icon--fill"><use href="#i-star"/></svg>
+                </span>
+                <span className="tp-card__body">
+                  <strong>Read our reviews on Trustpilot</strong>
+                  <small>Unprompted reviews from real sellers</small>
+                </span>
+                <svg className="icon tp-card__arrow"><use href="#i-arrow"/></svg>
+              </a>
             </div>
           </section>
 
