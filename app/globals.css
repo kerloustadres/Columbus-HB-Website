@@ -1556,7 +1556,6 @@ a.review__tag:hover { background: rgba(26, 80, 145, 0.16); }
     radial-gradient(45% 65% at 92% 85%, rgba(26, 80, 145, 0.6), transparent 70%),
     var(--navy-900);
 }
-.section__lead--light { color: var(--text-muted); }
 .vids__grid--3 { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 60rem; margin-inline: auto; }
 .vids__grid--3 .vid { border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: var(--glass-dark-shine), 0 30px 60px -24px rgba(0, 0, 0, 0.6); }
 .tp-card--center { width: fit-content; max-width: 100%; margin: 2.5rem auto 0; }

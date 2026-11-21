@@ -186,14 +186,17 @@ export default function Home() {
             <div className="container">
               <header className="section__head" data-animate>
                 <p className="eyebrow eyebrow--light">Video Reviews</p>
-                <h2 className="section__title section__title--light">Hear it straight from our sellers</h2>
-                <p className="section__lead section__lead--light">Real Columbus homeowners sharing what it was like to sell their house to us. No scripts, no actors.</p>
+                <h2 className="section__title section__title--light">Hear it from our sellers</h2>
               </header>
 
               <div className="vids__grid vids__grid--3">
-                {[1, 2, 3].map((n) => (
-                  <figure className="vid" data-animate style={{ "--delay": `${(n - 1) * 0.12}s` } as CSSProperties} key={n}>
-                    <video preload="none" playsInline poster={`/assets/videos/testimonial-${n}.webp`} width="720" height="1280" aria-label={`Video testimonial ${n} from a Columbus home seller`} title={`Seller testimonial ${n}`}>
+                {[
+                  { n: 3, poster: "testimonial-3-cover.webp" },
+                  { n: 1, poster: "testimonial-1.webp" },
+                  { n: 2, poster: "testimonial-2.webp" },
+                ].map(({ n, poster }, i) => (
+                  <figure className="vid" data-animate style={{ "--delay": `${i * 0.12}s` } as CSSProperties} key={n}>
+                    <video preload="none" playsInline poster={`/assets/videos/${poster}`} width="720" height="1280" aria-label={`Video testimonial ${n} from a Columbus home seller`} title={`Seller testimonial ${n}`}>
                       <source src={`/assets/videos/testimonial-${n}.mp4`} type="video/mp4" />
                     </video>
                     <button className="vid__play" aria-label={`Play seller testimonial ${n}`}>
